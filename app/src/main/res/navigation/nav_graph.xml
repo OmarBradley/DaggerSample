@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/infoTodoFragment">
+
+    <fragment
+        android:id="@+id/infoTodoFragment"
+        android:name="omarbradley.com.daggersample.presenter.view.InfoTodoFragment"
+        android:label="InfoTodoFragment"
+        tools:layout="@layout/fragment_info_todo">
+
+        <action
+            android:id="@+id/action_infoTodo_to_updateTodo"
+            app:destination="@+id/updateTodoFragment" />
+
+        <action
+            android:id="@+id/action_infoTodo_to_deleteTodo"
+            app:destination="@+id/deleteTodoFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/updateTodoFragment"
+        android:name="omarbradley.com.daggersample.presenter.view.UpdateTodoFragment"
+        android:label="UpdateTodoFragment"
+        tools:layout="@layout/fragment_update_todo" />
+
+    <fragment
+        android:id="@+id/deleteTodoFragment"
+        android:name="omarbradley.com.daggersample.presenter.view.DeleteTodoFragment"
+        android:label="DeleteTodoFragment"
+        tools:layout="@layout/fragment_delete_todo" />
+
+</navigation>

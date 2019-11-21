@@ -1,0 +1,77 @@
+apply plugin : 'com.android.application'
+apply plugin : 'kotlin-android'
+apply plugin : 'kotlin-kapt'
+apply plugin : 'kotlin-android-extensions'
+
+android {
+
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+
+    defaultConfig {
+        applicationId "omarbradley.com.daggersample"
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+}
+
+dependencies {
+
+    implementation deps.kotlin.stdlibJdk8
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.ktx
+    implementation deps.androidx.recyclerview
+    implementation deps.lifecycle.viewModelKtx
+    implementation deps.dagger.dagger
+    implementation deps.dagger.android
+    implementation deps.dagger.androidSupport
+    implementation deps.navigation.fragment
+    implementation deps.navigation.ui
+
+    kapt deps.lifecycle.compiler
+    kapt deps.dagger.compiler
+    kapt deps.dagger.androidProcessor
+
+    testImplementation deps.kotlinTest.runner
+    testImplementation deps.kotlinTest.extensionsKoin
+    testImplementation deps.koin.test
+
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.junit
+    androidTestImplementation deps.test.hamkrest
+    androidTestImplementation deps.koin.test
+}

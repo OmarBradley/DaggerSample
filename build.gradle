@@ -1,0 +1,19 @@
+
+buildscript {
+    apply from : "dependencies.gradle"
+
+    addRepositories(repositories)
+
+    dependencies {
+        classpath deps.build.gradle
+        classpath deps.kotlin.gradlePlugin
+    }
+}
+
+allprojects {
+    addRepositories(repositories)
+}
+
+task clean(type : Delete) {
+    delete rootProject.buildDir
+}
